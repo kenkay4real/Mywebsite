@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kenny Kay — Poet & Author</title>
+  <style>
+    /* Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap');
+
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #faf8f5;
+      color: #1a1a1a;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px 40px;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      font-family: 'Playfair Display', serif;
+      color: #333;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin: 0 0 0.3rem 0;
+      line-height: 1.2;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      font-style: italic;
+      font-weight: 400;
+      color: #555;
+      letter-spacing: 3px;
+      margin: 0;
+    }
+
+    .hero {
+      position: relative;
+      height: 220px;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') center center/cover no-repeat;
+      border-radius: 14px;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(250, 248, 245, 0.6);
+      backdrop-filter: saturate(180%) blur(4px);
+      pointer-events: none;
+    }
+
+    .about {
+      display: flex;
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+      align-items: center;
+      color: #2b2b2b;
+    }
+    .about img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 15px rgba(0,0,0,0.07);
+      border: 3px solid #a68d65;
+    }
+    .about-text {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #3a3a3a;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    h2.section-title {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #4a4a4a;
+      border-bottom: 2px solid #a68d65;
+      padding-bottom: 0.3rem;
+      max-width: max-content;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .featured-book {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 5rem;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .featured-book img {
+      width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(166,141,101,0.3);
+      flex-shrink: 0;
+    }
+    .featured-content {
+      flex: 1;
+      font-size: 1rem;
+      color: #444;
+      margin-top: 0;
+      font-family: 'Open Sans', sans-serif;
+    }
+    .featured-content strong {
+      font-size: 1.3rem;
+      color: #a68d65;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .btn-primary {
+      margin-top: 1.5rem;
+      padding: 0.65rem 1.5rem;
+      background-color: #a68d65;
+      color: #faf8f5;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'Times New Roman', serif;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #8c7652;
+      outline: none;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(140px,1fr));
+      gap: 1.8rem;
+      margin-bottom: 4rem;
+    }
+    .book-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 15px rgba(166,141,101,0.15);
+      text-align: center;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-family: 'Times New Roman', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 15px;
+    }
+    .book-card:hover,
+    .book-card:focus {
+      box-shadow: 0 8px 25px rgba(166,141,101,0.35);
+      transform: translateY(-5px);
+      outline: none;
+    }
+    .book-card img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid #e4d8bb;
+      border-radius: 10px 10px 0 0;
+      object-fit: cover;
+      height: 220px;
+    }
+    .book-title {
+      padding: 0.8rem 0.5rem 0.3rem;
+      font-weight: 700;
+      color: #6f5e3d;
+      font-family: 'Times New Roman', serif;
+      font-size: 1.1rem;
+    }
+    .book-desc {
+      padding: 0 10px 0.8rem;
+      font-size: 0.9rem;
+      color: #555;
+      font-family: 'Times New Roman', serif;
+      min-height: 80px;
+      max-width: 140px;
+      text-align: center;
+    }
+
+    .get-btn {
+      background-color: #a68d65;
+      color: #faf8f5;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      font-family: 'Times New Roman', serif;
+      transition: background-color 0.3s ease;
+    }
+    .get-btn:hover,
+    .get-btn:focus {
+      background-color: #8c7652;
+      outline: none;
+    }
+
+    footer {
+      margin-top: 6rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #999;
+      font-family: 'Open Sans', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 700px) {
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about img {
+        margin-bottom: 1.5rem;
+      }
+      .featured-book {
+        flex-direction: column;
+        text-align: center;
+      }
+      .featured-book img {
+        margin-bottom: 1rem;
+      }
+      .books-grid {
+        grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+      }
+      .book-desc {
+        max-width: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Kenny Kay</h1>
+      <p>Poet & Author</p>
+    </header>
+
+    <div class="hero" aria-hidden="true"></div>
+
+    <section class="about" aria-label="About the Author">
+      <img src="https://m.media-amazon.com/images/I/51i82k+nZEL._SX331_BO1,204,203,200_.jpg" alt="Portrait of Kenny Kay" />
+      <div class="about-text">
+        <p>
+          Kenny Kay (born March 4, 2002) is an Algerian poet and author whose passion for storytelling
+          emerged early in life. Growing up in a bustling city, he found refuge in books and indulged
+          in the fantastical worlds that sprang from his imagination.
+        </p>
+        <p>
+          Kay’s writing weaves raw, emotional narratives in both poetry and lyrical prose—exploring
+          themes of grief, love, longing, and introspection with minimalist yet profound language.
+        </p>
+      </div>
+    </section>
+
+    <section aria-label="Latest Release">
+      <h2 class="section-title">Latest Release</h2>
+      <article class="featured-book">
+        <img
+          src="https://m.media-amazon.com/images/I/41omIo9BX6L._SY445_SX342_.jpg"
+          alt="Faces by Kenny Kay"
+          loading="lazy"
+          width="200"
+          height="280"
+        />
+        <div class="featured-content">
+          <strong>Faces</strong>
+          <p>
+            Faces is a journey through the raw and vulnerable emotions that shape our identity.
+            Kenny Kay’s poetry exposes the many faces we wear, the masks we hide behind, and the truths we long to reveal.
+            Each poem resonates with authenticity and captures moments of love, loss, and self-discovery.
+            A compelling collection for those seeking to connect with the unspoken depths of the soul.
+          </p>
+          <a href="https://a.co/d/fAxEb3w" target="_blank" rel="noopener" class="btn-primary">Get Now</a>
+        </div>
+      </article>
+    </section>
+
+    <section aria-label="Other Books">
+      <h2 class="section-title">Books</h2>
+      <nav class="books-grid" aria-label="Books by Kenny Kay">
+        <a href="https://www.amazon.com/dp/B0DHV9HBG6" target="_blank" rel="noopener noreferrer" class="book-card" tabindex="0">
+          <img
+            src="https://m.media-amazon.com/images/I/41eAybKJ4ML._SY445_SX342_.jpg"
+            alt="The Divine Feminine by Kenny Kay"
+            loading="lazy"
+            width="140"
+            height="220"
+          />
+          <div class="book-title">The Divine Feminine</div>
+          <p class="book-desc">
+            In this stirring collection of poetry, Kenny Kay honors the emotional depth, sacred power, and healing energy of the feminine soul.
+          </p>
+          <a href="https://www.amazon.com/dp/B0DHV9HBG6" target="_blank" rel="noopener" class="get-btn">Get Now</a>
+        </a>
+        <a href="https://a.co/d/9MunIAp" target="_blank" rel="noopener noreferrer" class="book-card" tabindex="0">
+          <img
+            src="https://m.media-amazon.com/images/I/41wpPjz+MTL._SY445_SX342_.jpg"
+            alt="Affection by Kenny Kay"
+            loading="lazy"
+            width="140"
+            height="220"
+          />
+          <div class="book-title">Affection</div>
+          <p class="book-desc">
+            "Affection" is a collection of heartfelt poetry that explores the intricate threads of love, longing, and tenderness. Each verse weaves together delicate emotions and raw vulnerability, capturing the essence of human connection.
+          </p>
+          <a href="https://a.co/d/9MunIAp" target="_blank" rel="noopener" class="get-btn">Get Now</a>
+        </a>
+        <a href="https://a.co/d/fAxEb3w" target="_blank" rel="noopener noreferrer" class="book-card" tabindex="0">
+          <img
+            src="https://m.media-amazon.com/images/I/41nB4aCMc7L._SY445_SX342_.jpg"
+            alt="The Shine by Kenny Kay"
+            loading="lazy"
+            width="140"
+            height="220"
+          />
+          <div class="book-title">The Shine</div>
+          <p class="book-desc">
+            A collection of poems that illuminate the beauty of resilience, hope, and the human spirit, encouraging readers to embrace their inner light.
+          </p>
+          <a href="https://a.co/d/fAxEb3w" target="_blank" rel="noopener" class="get-btn">Get Now</a>
+        </a>
+      </nav>
+    </section>
+
+    <footer>
+      &copy; 2025 Kenny Kay. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
